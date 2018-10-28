@@ -24,6 +24,7 @@ import Data.Char
 -- is still a String, not a sequence of bytes.
 decode :: String -> String
 decode "" = ""
+decode "=" = ""
 decode ('=':'\r':'\n':xs) = decode xs -- soft line break.
 decode ('=':'\n':xs) = decode xs -- soft line break. We don't assume \r\n.
 decode ('=':x1:x2:xs)
